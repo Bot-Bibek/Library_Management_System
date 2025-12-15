@@ -34,6 +34,33 @@ public class AddBookForm extends JFrame {
         JTextField quantityField = new JTextField();
 
         addFormRow(formPanel, gbc,0, "Title: ", titleField );
+        addFormRow(formPanel, gbc,1, "Author: ", authorField );
+        addFormRow(formPanel, gbc,2, "Isbn: ", isbnField );
+        addFormRow(formPanel, gbc,3, "Quantity: ", quantityField );
+        add(formPanel, BorderLayout.CENTER);
+
+
+        //Button
+        JPanel  buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20 , 10));
+        JButton saveButton = new JButton("Save");
+        JButton cancelButton = new JButton("Cancel");
+
+        Font btnFont = new  Font("Arial", Font.BOLD, 20);
+        JButton [] buttons = {saveButton,cancelButton};
+        for(JButton button : buttons){
+            button.setFont(btnFont);
+            button.setBackground(new Color(255,255,255));
+            button.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createLineBorder(new Color(180,200,230,1)),
+                    new EmptyBorder(8,20,8,20)
+            ));
+
+
+        }
+        buttonPanel.add(saveButton);
+        buttonPanel.add(cancelButton);
+        add(buttonPanel, BorderLayout.SOUTH);
+        setVisible(true);
 
     }
 
@@ -43,6 +70,12 @@ public class AddBookForm extends JFrame {
         gbc.gridy = y;
         gbc.weightx = 0.3;
         panel.add(new JLabel(labelText), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 0.7;
+        panel.add(textField, gbc);
+
+
 
     }
 }
